@@ -33,7 +33,14 @@ class Elevator:
 
     def not_heuristic(self):
         return 0
-
+    
+    def heuristic_one(self):
+        # soma do erro de cada elevador até a média do intervalo do objetivo [21-25]
+        err = 0
+        for i in range(self.state.size):
+            err = err + abs(self.state[i]-23)
+        return err
+    
     def up(self,idx1,idx2):
         if (self.state[idx1] + 8 <= 49) and (self.state[idx2] + 8 <= 49):
             new_state = self.state

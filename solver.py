@@ -29,7 +29,7 @@ class Solver(ABC):
     def solve(self):
         pass
 
-    def set_solution(self, board):
-        self.solution = board
+    def set_solution(self, elevator):
+        self.solution = elevator
         self.nodes_expanded = len(self.explored_nodes) - len(self.frontier) - 1
         # return self.solution
