@@ -13,7 +13,7 @@ class Elevator:
         self.state = np.array(state)
         self.operator = operator
         self.depth = depth
-        self.cost = self.depth + self.not_heuristic()
+        self.cost = self.depth + self.heuristic_one()
 
     def __lt__(self, other):
         if self.cost != other.cost:
@@ -43,7 +43,7 @@ class Elevator:
     
     def up(self,idx1,idx2):
         if (self.state[idx1] + 8 <= 49) and (self.state[idx2] + 8 <= 49):
-            new_state = self.state
+            new_state = self.state.copy()
             new_state[idx1] = new_state[idx1] + 8
             new_state[idx2] = new_state[idx2] + 8
             return Elevator(new_state, self, str(idx1+1) + str(idx2+1) + '+', self.depth + 1)
@@ -52,7 +52,7 @@ class Elevator:
 
     def down(self,idx1,idx2):
         if (self.state[idx1] - 13 >= 0) and (self.state[idx2] - 13 >= 0):
-            new_state = self.state
+            new_state = self.state.copy()
             new_state[idx1] = new_state[idx1] - 13
             new_state[idx2] = new_state[idx2] - 13
             return Elevator(new_state, self, str(idx1+1) + str(idx2+1) + '-', self.depth + 1)
