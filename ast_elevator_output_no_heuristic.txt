@@ -1,8 +1,8 @@
-path_to_goal: ['12-', '23-', '45-', '12+', '45-', '12+', '13+', '23-', '13+']
-cost_of_path: 9
-nodes_expanded: 297115
-nodes_explored: 752231
-search_depth: 9
-max_search_depth: 10
-running_time: 45.780784
-max_ram_usage: 486.7890625
+path_to_goal: ['45+', '45-', '45-', '23-', '34+', '24+', '13+', '45+']
+cost_of_path: 8
+nodes_expanded: 71561
+nodes_explored: 179538
+search_depth: 8
+max_search_depth: 9
+running_time: 25.680213
+max_ram_usage: 149.203125
