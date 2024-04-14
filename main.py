@@ -36,8 +36,8 @@ def main():
     file.write('search_depth: ' + str(s.solution.depth) + '\n')
     file.write('max_search_depth: ' + str(s.max_depth) + '\n')
     file.write('running_time: ' + str(resource.getrusage(resource.RUSAGE_SELF).ru_utime + \
-                                      resource.getrusage(resource.RUSAGE_SELF).ru_stime) + '\n')
-    file.write('max_ram_usage: ' + str(resource.getrusage(resource.RUSAGE_SELF).ru_maxrss / 1024))
+                                      resource.getrusage(resource.RUSAGE_SELF).ru_stime) + ' sec\n')
+    file.write('max_ram_usage: ' + str(resource.getrusage(resource.RUSAGE_SELF).ru_maxrss / 1024) + ' kbytes')
 
     file.close()
 
