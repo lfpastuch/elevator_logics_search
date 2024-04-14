@@ -1,3 +1,4 @@
+initial_state: [17,26,20,19,31]
 path_to_goal: ['14+', '45-', '45+', '23+', '25-', '45+', '34-', '34+']
 cost_of_path: 8
 nodes_expanded: 69

@@ -26,8 +26,9 @@ def main():
         s = AStar(p)
     s.solve()
 
-    file = open(f'{alg}_elevator_output1.txt', 'w')
+    file = open(f'{alg}_elevator_output.txt', 'w')
 
+    file.write('initial_state: [' + sys.argv[2] + ']\n')
     file.write('path_to_goal: ' + str(s.path) + '\n')
     file.write('cost_of_path: ' + str(len(s.path)) + '\n')
     file.write('nodes_expanded: ' + str(s.nodes_expanded) + '\n')
