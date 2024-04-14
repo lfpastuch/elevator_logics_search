@@ -1,6 +1,5 @@
 import numpy as np
 
-
 class Elevator:
     parent = None
     state = None
@@ -13,7 +12,7 @@ class Elevator:
         self.state = np.array(state)
         self.operator = operator
         self.depth = depth
-        self.cost = self.depth + self.heuristic_one()
+        self.cost = self.depth + self.heuristic_six()
 
     def __lt__(self, other):
         if self.cost != other.cost:
@@ -35,11 +34,53 @@ class Elevator:
         return 0
     
     def heuristic_one(self):
-        # soma do erro de cada elevador até a média do intervalo do objetivo [21-25]
+        # minimizar soma do erro de cada elevador até a média do intervalo do objetivo [21-25]
         err = 0
         for i in range(self.state.size):
             err = err + abs(self.state[i]-23)
         return err
+    
+    def heuristic_two(self):
+        # minimizar soma do erro de cada elevador até o objetivo [21-25]
+        err = 0
+        for i in range(self.state.size):
+            if self.state[i] > 25:
+                err = err + abs(self.state[i]-25)
+            elif self.state[i] < 21:
+                err = err + abs(self.state[i]-21)
+        return err
+    
+    def heuristic_three(self):
+        # minimizar soma do erro de cada elevador até o objetivo [21-25] e diferença entre os elevadores
+        err = 0
+        for i in range(self.state.size):
+            if self.state[i] > 25:
+                err = err + abs(self.state[i]-25)
+            elif self.state[i] < 21:
+                err = err + abs(self.state[i]-21)
+            err = err + abs(self.state[i]- self.state.mean())
+        return err
+    
+    def heuristic_four(self):
+        # minimizar diferença entre os elevadores
+        err = 0
+        for i in range(self.state.size):
+            err = err + abs(self.state[i]- self.state.mean())
+        return err
+    
+    def heuristic_five(self):
+        # minimizar desvio padrão
+        return self.state.std()
+    
+    def heuristic_six(self):
+        # minimizar soma do erro de cada elevador até o objetivo [21-25] e desvio padrão
+        err = 0
+        for i in range(self.state.size):
+            if self.state[i] > 25:
+                err = err + abs(self.state[i]-25)
+            elif self.state[i] < 21:
+                err = err + abs(self.state[i]-21)
+        return err + self.state.std()
     
     def up(self,idx1,idx2):
         if (self.state[idx1] + 8 <= 49) and (self.state[idx2] + 8 <= 49):
