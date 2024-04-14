@@ -12,7 +12,7 @@ class Elevator:
         self.state = np.array(state)
         self.operator = operator
         self.depth = depth
-        self.cost = self.depth + self.heuristic_six()
+        self.cost = self.depth + self.err_sum_interval_and_std_dev()
 
     def __lt__(self, other):
         if self.cost != other.cost:
@@ -33,15 +33,15 @@ class Elevator:
     def not_heuristic(self):
         return 0
     
-    def heuristic_one(self):
-        # minimizar soma do erro de cada elevador até a média do intervalo do objetivo [21-25]
+    def err_sum(self):
+        # minimize sum of error from each elevator to interval mean (23)
         err = 0
         for i in range(self.state.size):
             err = err + abs(self.state[i]-23)
         return err
     
-    def heuristic_two(self):
-        # minimizar soma do erro de cada elevador até o objetivo [21-25]
+    def err_sum_interval(self):
+        # minimize sum of error from each elevator to interval [21,25]
         err = 0
         for i in range(self.state.size):
             if self.state[i] > 25:
@@ -50,8 +50,15 @@ class Elevator:
                 err = err + abs(self.state[i]-21)
         return err
     
-    def heuristic_three(self):
-        # minimizar soma do erro de cada elevador até o objetivo [21-25] e diferença entre os elevadores
+    def err_state_mean(self):
+        # minimize difference between elevators
+        err = 0
+        for i in range(self.state.size):
+            err = err + abs(self.state[i]- self.state.mean())
+        return err
+    
+    def err_sum_interval_and_state_mean(self):
+        # minimize sum of error from each elevator to interval [21,25] and difference between elevators
         err = 0
         for i in range(self.state.size):
             if self.state[i] > 25:
@@ -61,19 +68,8 @@ class Elevator:
             err = err + abs(self.state[i]- self.state.mean())
         return err
     
-    def heuristic_four(self):
-        # minimizar diferença entre os elevadores
-        err = 0
-        for i in range(self.state.size):
-            err = err + abs(self.state[i]- self.state.mean())
-        return err
-    
-    def heuristic_five(self):
-        # minimizar desvio padrão
-        return self.state.std()
-    
-    def heuristic_six(self):
-        # minimizar soma do erro de cada elevador até o objetivo [21-25] e desvio padrão
+    def err_sum_interval_and_std_dev(self):
+        # minimize sum of error from each elevator to interval [21,25] and standard deviation
         err = 0
         for i in range(self.state.size):
             if self.state[i] > 25:
