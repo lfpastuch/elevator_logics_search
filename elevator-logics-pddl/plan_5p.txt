@@ -1,0 +1,33 @@
+Plan computed:
+   Time: (ACTION) [action Duration; action Cost]
+ 0.0003: (MOVE-UP F1 F25) [D:1.0000; C:1.0000]
+ 1.0005: (ENTER P5 F25) [D:1.0000; C:1.0000]
+ 2.0008: (EXIT P5 F25) [D:1.0000; C:1.0000]
+ 3.0010: (MOVE-DOWN F25 F15) [D:1.0000; C:1.0000]
+ 4.0012: (ENTER P3 F15) [D:1.0000; C:1.0000]
+ 5.0015: (EXIT P5 F15) [D:1.0000; C:1.0000]
+ 6.0017: (MOVE-UP F15 F40) [D:1.0000; C:1.0000]
+ 7.0020: (EXIT P3 F40) [D:1.0000; C:1.0000]
+ 8.0022: (MOVE-DOWN F40 F5) [D:1.0000; C:1.0000]
+ 9.0025: (ENTER P1 F5) [D:1.0000; C:1.0000]
+ 10.0028: (EXIT P5 F5) [D:1.0000; C:1.0000]
+ 11.0030: (MOVE-UP F5 F20) [D:1.0000; C:1.0000]
+ 12.0033: (EXIT P1 F20) [D:1.0000; C:1.0000]
+ 13.0035: (ENTER P4 F20) [D:1.0000; C:1.0000]
+ 14.0037: (EXIT P3 F20) [D:1.0000; C:1.0000]
+ 15.0040: (MOVE-DOWN F20 F10) [D:1.0000; C:1.0000]
+ 16.0042: (EXIT P4 F10) [D:1.0000; C:1.0000]
+ 17.0045: (ENTER P2 F10) [D:1.0000; C:1.0000]
+ 18.0047: (EXIT P2 F10) [D:1.0000; C:1.0000]
+ 19.0050: (MOVE-DOWN F10 F30) [D:1.0000; C:1.0000]
+ 20.0053: (EXIT P2 F30) [D:1.0000; C:1.0000]
+
+
+Solution found:
+Total time:      1.01
+Search time:     0.36
+Actions:         21
+Execution cost:  21.00
+Duration:        21.000
+Plan quality:    21.000
+     Plan file:       plan.txt_1.SOL
